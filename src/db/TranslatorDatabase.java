@@ -1,7 +1,6 @@
 package db;
 
 import model.Word;
-
 import java.sql.*;
 
 /**
@@ -11,6 +10,7 @@ public class TranslatorDatabase {
 
     private Connection connection = null;
     private static TranslatorDatabase instance;
+    private final String DB_URL = "jdbc:sqlite:src/resources/database.db";
 
     public static TranslatorDatabase getInstance() {
         if (instance == null)
@@ -28,7 +28,7 @@ public class TranslatorDatabase {
     public void createConnection() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:/home/roma/Рабочий " + "стол/database.db");
+            connection = DriverManager.getConnection(DB_URL);
         } catch (Exception e) {
             e.printStackTrace();
         }
